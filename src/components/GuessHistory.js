@@ -4,7 +4,7 @@ import "./GuessHistory.css";
 export function GuessHistory() {
   return (
     <div className="GuessHistory">
-      <h2>Guess History</h2>
+      <h2 className="guess-history-header">Guess History</h2>
       <div className="guess-history-container">
         <div className="each-guess">
           <div className="guess">Guess</div>

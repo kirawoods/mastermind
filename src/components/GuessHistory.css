@@ -1,21 +1,28 @@
 .guess-history-container {
-  width: 100%;
   background-color: bisque;
   display: flex;
-  padding: 10px;
+  margin: 10px;
+  padding: 20px 10px;
+}
+
+.guess-history-header {
+  text-align: center;
 }
 
 .each-guess {
   display: flex;
   width: 100%;
+  justify-content: space-around;
 }
 
 .guess {
-  width: 50%;
+  width: 45%;
   background-color: blue;
+  padding: 10px;
 }
 
 .feedback {
-  width: 50%;
+  width: 45%;
   background-color: red;
+  padding: 10px;
 }

@@ -1,7 +1,10 @@
 .Header {
-  width: 100%;
+  background-color: #313335;
+  color: white;
+  padding: 10px;
 }
 
 .header-text {
   text-align: center;
+  color: white;
 }
