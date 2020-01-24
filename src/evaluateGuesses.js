@@ -6,6 +6,6 @@ export const evaluateGuesses = (code, guesses) => {
   } else if (code !== guesses[guesses.length - 1] && guesses.length >= 10) {
     return "You Lost :(";
   } else {
-    return "Try Again, Loserino";
+    return "Try Again";
   }
 };
