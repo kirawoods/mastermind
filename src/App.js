@@ -1,5 +1,4 @@
 import React from "react";
-import evaluateGuess from "./evaluateGuess";
 import "./App.css";
 
 function App() {
