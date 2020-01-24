@@ -149,3 +149,14 @@ test("returns 1 correct digits in correct position and 3 correct digits in incor
     "Correct Digit and Position: 1 Correct Digit and Incorrect Position: 3"
   );
 });
+
+test("returns 1 correct digits in correct position and 1 correct digits in incorrect position in case of double digits in code", () => {
+  const code = [2, 2, 4, 1];
+  const guesses = [
+    [0, 1, 2, 3],
+    [1, 2, 1, 3]
+  ];
+  expect(evaluateGuesses(code, guesses)).toBe(
+    "Correct Digit and Position: 1 Correct Digit and Incorrect Position: 1"
+  );
+});
