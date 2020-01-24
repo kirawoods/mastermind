@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
+import { GamePlayPage } from "./components/GamePlayPage";
 
 function App() {
   return (
     <div className="App">
-      <header>Mastermind</header>
+      <GamePlayPage />
     </div>
   );
 }
