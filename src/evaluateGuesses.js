@@ -1,14 +1,13 @@
 import arrayEqual from "array-equal";
-import React from "react";
 
 let guessCount = 10;
 let codeLengthMinusOne = 3;
 
 export const evaluateGuesses = (code, guesses) => {
-  let digitAndPositionCorrect = 0;
-  let onlyDigitCorrect = 0;
   let codeCopy = code;
   let guessCopy = guesses[guesses.length - 1];
+  let digitAndPositionCorrect = 0;
+  let onlyDigitCorrect = 0;
 
   if (arrayEqual(code, guesses[guesses.length - 1])) {
     return "You Won!";
@@ -26,15 +25,14 @@ export const evaluateGuesses = (code, guesses) => {
       }
     }
     for (let i = 0; i <= 7; i++) {
-      let codeCopyCount = codeCopy.filter(function(number) {
-        return number === i;
-      }).length;
-
-      let guessCopyCount = guessCopy.filter(function(number) {
-        return number === i;
-      }).length;
-
-      onlyDigitCorrect += Math.min(codeCopyCount, guessCopyCount);
+      onlyDigitCorrect += Math.min(
+        codeCopy.filter(function(number) {
+          return number === i;
+        }).length,
+        guessCopy.filter(function(number) {
+          return number === i;
+        }).length
+      );
     }
     return (
       "Correct Digit and Position: " +
