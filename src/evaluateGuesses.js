@@ -2,6 +2,7 @@ import arrayEqual from "array-equal";
 
 let guessCount = 10;
 let codeLengthMinusOne = 3;
+let allowedDigits = 7;
 
 export const evaluateGuesses = (code, guesses) => {
   let codeCopy = code;
@@ -24,7 +25,7 @@ export const evaluateGuesses = (code, guesses) => {
         guessCopy.splice(i, 1, null);
       }
     }
-    for (let i = 0; i <= 7; i++) {
+    for (let i = 0; i <= allowedDigits; i++) {
       onlyDigitCorrect += Math.min(
         codeCopy.filter(function(number) {
           return number === i;
