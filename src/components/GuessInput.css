@@ -10,7 +10,7 @@ input::-webkit-inner-spin-button {
 }
 
 .digit-input {
-  width: 50px;
+  width: 200px;
   height: 50px;
   border-radius: 5px;
   font-size: 40px;

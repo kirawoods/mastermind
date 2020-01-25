@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import App from "./App";
+
 import { evaluateGuesses } from "./evaluateGuesses";
 
 test("returns 'You Won!' when the last guess is equal to the code", () => {

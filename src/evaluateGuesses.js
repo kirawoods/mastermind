@@ -1,10 +1,9 @@
 import arrayEqual from "array-equal";
 
-let guessCount = 10;
-let codeLength = 4;
-let codeLengthMinusOne = codeLength - 1;
-let allowedDigits = 7;
-let guesses = [];
+const guessCount = 10;
+export const codeLength = 4;
+export const codeLengthMinusOne = codeLength - 1;
+export const allowedDigits = 7;
 
 export const evaluateGuesses = (code, guesses) => {
   let codeCopy = code;
