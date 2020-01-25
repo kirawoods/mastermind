@@ -4,10 +4,10 @@ import "./GuessInput.css";
 export function GuessInput() {
   return (
     <div className="GuessInput">
-      <input className="digit-input"></input>
-      <input className="digit-input"></input>
-      <input className="digit-input"></input>
-      <input className="digit-input"></input>
+      <input type="number" className="digit-input" required></input>
+      <input type="number" className="digit-input" required></input>
+      <input type="number" className="digit-input" required></input>
+      <input type="number" className="digit-input" required></input>
       <br></br>
       <button className="guess-button">Make Guess</button>
     </div>
