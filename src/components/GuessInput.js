@@ -2,12 +2,24 @@ import React from "react";
 import "./GuessInput.css";
 import { codeLength, allowedDigits } from "../evaluateGuesses";
 
+let guesses = [];
+
+const handleClick = e => {
+  e.preventDefault();
+  let guess = document.getElementById("input").value;
+  let guessArray = Array.from(guess).map(el => parseInt(el));
+  guesses.push(guessArray);
+  console.log(guesses);
+  let form = document.getElementById("input-form");
+  form.reset();
+};
+
 export function GuessInput() {
   return (
     <div className="GuessInput">
-      <form autoComplete="off">
+      <form id="input-form" autoComplete="off">
         <input
-          id="0"
+          id="input"
           type="text"
           className="digit-input"
           pattern={"[0-" + allowedDigits + "]{" + codeLength + "}"}
@@ -15,7 +27,7 @@ export function GuessInput() {
         ></input>
 
         <br></br>
-        <button type="submit" className="guess-button">
+        <button onClick={handleClick} className="guess-button">
           Make Guess
         </button>
       </form>
