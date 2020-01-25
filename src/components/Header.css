@@ -3,9 +3,28 @@
   color: white;
   padding: 10px;
   border-radius: 2px 2px 0px 0px;
+  min-height: 100vh;
 }
 
 .header-text {
   text-align: center;
   color: white;
+  font-size: 55px;
+  padding: 20px;
+}
+
+.rules {
+  padding: 20px;
+  font-size: 25px;
+  border-radius: 2px;
+  margin: 20px;
+}
+
+.rules-bullet-list {
+  padding: 10px;
+}
+.rules-bullet {
+  list-style-type: circle;
+  margin-left: 30px;
+  padding: 5px;
 }

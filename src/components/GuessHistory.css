@@ -1,23 +1,27 @@
 .guess-history-container {
   background-color: #86888a;
-  display: flex;
-  margin: 10px;
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
   padding: 20px 10px;
   border-radius: 2px;
 }
 
-.guess-history-header {
+.guesses-remaining {
+  font-size: 20px;
   text-align: center;
+  padding: 10px;
 }
 
 .each-guess {
   display: flex;
   width: 100%;
   justify-content: space-around;
+  margin: 10px;
 }
 
 .guess {
-  width: 30%;
+  width: 40%;
   background-color: #00a0dc;
   color: #fff;
   padding: 10px;
@@ -27,10 +31,11 @@
 }
 
 .feedback {
-  width: 60%;
+  width: 40%;
   background-color: #0077b5;
   color: #fff;
   padding: 10px;
   border-radius: 2px;
   font-size: 20px;
+  text-align: center;
 }

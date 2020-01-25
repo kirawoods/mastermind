@@ -7,9 +7,13 @@ import { GuessInput } from "./GuessInput";
 export function GamePlayPage() {
   return (
     <div className="GamePlayPage">
-      <Header />
-      <GuessInput />
-      <GuessHistory />
+      <div className="header">
+        <Header />
+      </div>
+      <div className="gameplay">
+        <GuessInput />
+        <GuessHistory />
+      </div>
     </div>
   );
 }

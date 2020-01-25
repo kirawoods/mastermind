@@ -1,1 +1,11 @@
+.GamePlayPage {
+  display: flex;
+}
 
+.header {
+  width: 35%;
+}
+
+.gameplay {
+  width: 65%;
+}
