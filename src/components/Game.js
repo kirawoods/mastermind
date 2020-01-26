@@ -25,11 +25,11 @@ class Game extends Component {
     const allowedValue = this.allowedValues(codeLength, allowedDigits);
     if (guess <= allowedValue && guess.length === codeLength) {
       const guessArray = Array.from(guess).map(el => parseInt(el));
-      console.log(guessArray);
+
       this.setState({
         guesses: [...this.state.guesses, guessArray]
       });
-      console.log(this.state);
+
       let form = document.getElementById("input-form");
       form.reset();
     } else {
@@ -42,7 +42,6 @@ class Game extends Component {
     }
   };
   render() {
-    console.log(this.allowedValues(codeLength, allowedDigits));
     return (
       <div>
         <div className="GuessInput">
