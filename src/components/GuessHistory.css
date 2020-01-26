@@ -13,6 +13,13 @@
   padding: 10px;
 }
 
+.guess-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin: 10px;
+}
+
 .each-guess {
   display: flex;
   width: 100%;
