@@ -1,6 +1,6 @@
 import arrayEqual from "array-equal";
 
-const guessCount = 10;
+export const guessesAllowed = 10;
 export const codeLength = 4;
 export const codeLengthMinusOne = codeLength - 1;
 export const allowedDigits = 7;
@@ -40,7 +40,7 @@ export const evaluateGuesses = (code, guesses) => {
     return "You Won!";
   } else if (
     guesses[guesses.length - 1] !== code &&
-    guesses.length >= guessCount
+    guesses.length >= guessesAllowed
   ) {
     return "You Lost :(";
   } else {

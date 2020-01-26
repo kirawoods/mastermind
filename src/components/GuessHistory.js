@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./GuessHistory.css";
 import uniqueID from "uniqid";
 
-import { evaluateGuess } from "../evaluateGuesses";
+import { evaluateGuess, guessesAllowed } from "../evaluateGuesses";
 
 const displayGuess = guess => {
   console.log(guess);
@@ -21,7 +21,9 @@ class GuessHistory extends Component {
   render() {
     return (
       <div className="GuessHistory">
-        <p className="guesses-remaining">Guesses Remaining: 10</p>
+        <p className="guesses-remaining">
+          Guesses Remaining: {guessesAllowed - this.props.guesses.length}
+        </p>
         <div className="guess-history-container">
           <div className="guess-header">
             <div className="guess">Guess</div>

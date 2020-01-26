@@ -23,7 +23,7 @@ class Game extends Component {
     e.preventDefault();
     const guess = document.getElementById("input").value;
     const allowedValue = this.allowedValues(codeLength, allowedDigits);
-    if (guess <= allowedValue) {
+    if (guess <= allowedValue && guess.length === codeLength) {
       const guessArray = Array.from(guess).map(el => parseInt(el));
       console.log(guessArray);
       this.setState({
@@ -33,7 +33,12 @@ class Game extends Component {
       let form = document.getElementById("input-form");
       form.reset();
     } else {
-      window.alert("Please enter a value between 0000 and " + allowedValue);
+      window.alert(
+        "Please enter a " +
+          codeLength +
+          " digit value between 0000 and " +
+          allowedValue
+      );
     }
   };
   render() {
