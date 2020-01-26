@@ -7,7 +7,7 @@ const displayGuess = guess => {
   console.log(guess);
   return (
     <div key={Date.now()} className="each-guess">
-      <div className="guess">{guess.toString()}</div>
+      <div className="guess">{guess.join("")}</div>
       <div className="feedback">{evaluateGuess([0, 2, 2, 3], guess)}</div>
     </div>
   );
