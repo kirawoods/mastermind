@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./GuessHistory.css";
+import uniqueID from "uniqid";
 
 import { evaluateGuess } from "../evaluateGuesses";
 
 const displayGuess = guess => {
   console.log(guess);
   return (
-    <div key={Date.now()} className="each-guess">
+    <div key={uniqueID()} className="each-guess">
       <div className="guess">{guess.join("")}</div>
       <div className="feedback">{evaluateGuess([0, 2, 2, 3], guess)}</div>
     </div>
