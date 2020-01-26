@@ -3,7 +3,6 @@ import "./Game.css";
 import GuessHistory from "./GuessHistory";
 import arrayEqual from "array-equal";
 import { codeLength, allowedDigits, guessesAllowed } from "../evaluateGuesses";
-import code from "../code";
 
 class Game extends Component {
   constructor(props) {
