@@ -16,12 +16,6 @@ const displayGuess = guess => {
 class GuessHistory extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      guesses: [
-        [0, 1, 1, 1],
-        [4, 5, 6, 7]
-      ]
-    };
   }
   render() {
     return (

@@ -12,7 +12,7 @@ export function GamePlayPage() {
       </div>
       <div className="gameplay">
         <GuessInput />
-        <GuessHistory />
+        {/* <GuessHistory /> */}
       </div>
     </div>
   );
