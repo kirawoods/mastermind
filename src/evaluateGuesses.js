@@ -1,5 +1,3 @@
-import arrayEqual from "array-equal";
-
 export const guessesAllowed = 10;
 export const codeLength = 4;
 export const codeLengthMinusOne = codeLength - 1;
@@ -41,17 +39,4 @@ export const evaluateGuess = (code, guess) => {
     feedback += "-";
   }
   return feedback;
-};
-
-export const evaluateGuesses = (code, guesses) => {
-  if (arrayEqual(code, guesses[guesses.length - 1])) {
-    return "You Won!";
-  } else if (
-    guesses[guesses.length - 1] !== code &&
-    guesses.length >= guessesAllowed
-  ) {
-    return "You Lost :(";
-  } else {
-    //render page and do evaluate guess function
-  }
 };

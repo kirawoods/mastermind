@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./GuessHistory.css";
 import uniqueID from "uniqid";
 import axios from "axios";
+import arrayEqual from "array-equal";
 import { evaluateGuess, guessesAllowed } from "../evaluateGuesses";
 
 let code = [];
@@ -15,6 +16,7 @@ axios
       .replace(/\s/g, "")
       .split("")
       .map(el => parseInt(el));
+    console.log(code);
   })
   .catch(error => {
     console.log(error);
@@ -34,20 +36,47 @@ class GuessHistory extends Component {
     super(props);
   }
   render() {
-    return (
-      <div className="GuessHistory">
-        <p className="guesses-remaining">
-          Guesses Remaining: {guessesAllowed - this.props.guesses.length}
-        </p>
-        <div className="guess-history-container">
-          <div className="guess-header">
-            <div className="guess">Guess</div>
-            <div className="feedback">Feedback</div>
+    console.log(this.props.guesses);
+    if (this.props.guesses.length !== 0) {
+      if (arrayEqual(code, this.props.guesses[this.props.guesses.length - 1])) {
+        return "You Won!";
+      } else if (
+        this.props.guesses[this.props.guesses.length - 1] !== code &&
+        this.props.guesses.length >= guessesAllowed
+      ) {
+        return "You Lost :(";
+      } else {
+        return (
+          <div className="GuessHistory">
+            <p className="guesses-remaining">
+              Guesses Remaining: {guessesAllowed - this.props.guesses.length}
+            </p>
+            <div className="guess-history-container">
+              <div className="guess-header">
+                <div className="guess">Guess</div>
+                <div className="feedback">Feedback</div>
+              </div>
+              {this.props.guesses.map(guess => displayGuess(guess))}
+            </div>
           </div>
-          {this.props.guesses.map(guess => displayGuess(guess))}
+        );
+      }
+    } else {
+      return (
+        <div className="GuessHistory">
+          <p className="guesses-remaining">
+            Guesses Remaining: {guessesAllowed - this.props.guesses.length}
+          </p>
+          <div className="guess-history-container">
+            <div className="guess-header">
+              <div className="guess">Guess</div>
+              <div className="feedback">Feedback</div>
+            </div>
+            {this.props.guesses.map(guess => displayGuess(guess))}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
