@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./GuessInput.css";
+import GuessHistory from "./GuessHistory";
 
 class GuessInput extends Component {
   constructor(props) {
@@ -21,20 +22,23 @@ class GuessInput extends Component {
   };
   render() {
     return (
-      <div className="GuessInput">
-        <form id="input-form" autoComplete="off">
-          <input
-            id="input"
-            type="text"
-            className="digit-input"
-            required
-          ></input>
+      <div>
+        <div className="GuessInput">
+          <form id="input-form" autoComplete="off">
+            <input
+              id="input"
+              type="text"
+              className="digit-input"
+              required
+            ></input>
 
-          <br></br>
-          <button onClick={this.handleClick} className="guess-button">
-            Make Guess
-          </button>
-        </form>
+            <br></br>
+            <button onClick={this.handleClick} className="guess-button">
+              Make Guess
+            </button>
+          </form>
+        </div>
+        <GuessHistory guesses={this.state.guesses} />
       </div>
     );
   }

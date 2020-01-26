@@ -26,7 +26,7 @@ class GuessHistory extends Component {
             <div className="guess">Guess</div>
             <div className="feedback">Feedback</div>
           </div>
-          {this.state.guesses.map(guess => displayGuess(guess))}
+          {this.props.guesses.map(guess => displayGuess(guess))}
         </div>
       </div>
     );
