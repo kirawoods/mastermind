@@ -1,0 +1,20 @@
+.LosePage {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding: 140px 0px;
+}
+.lose-header {
+  font-size: 50px;
+}
+
+.play-again-button {
+  margin: 10px;
+  background-color: #0073b1;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 20px;
+}

@@ -1,34 +1,7 @@
 import React, { Component } from "react";
 import "./Game.css";
 import GuessHistory from "./GuessHistory";
-import arrayEqual from "array-equal";
-import axios from "axios";
-import uniqueID from "uniqid";
-import { WinPage } from "./WinPage";
-import { LosePage } from "./LosePage";
-import {
-  codeLength,
-  allowedDigits,
-  evaluateGuess,
-  guessesAllowed
-} from "../evaluateGuesses";
-
-let code = [];
-axios
-  .get(
-    `https://www.random.org/integers/?num=4&min=0&max=7&col=4&base=10&format=plain&rnd=new`
-  )
-  .then(response => {
-    const codeInfo = response.data;
-    code = codeInfo
-      .replace(/\s/g, "")
-      .split("")
-      .map(el => parseInt(el));
-    console.log(code);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+import { codeLength, allowedDigits } from "../evaluateGuesses";
 
 class Game extends Component {
   constructor(props) {
@@ -37,15 +10,6 @@ class Game extends Component {
       guesses: []
     };
   }
-
-  displayGuess = guess => {
-    return (
-      <div key={uniqueID()} className="each-guess">
-        <div className="guess">{guess.join("")}</div>
-        <div className="feedback">{evaluateGuess(code, guess)}</div>
-      </div>
-    );
-  };
 
   allowedValues = (length, digits) => {
     let value = 0;
@@ -78,40 +42,27 @@ class Game extends Component {
     }
   };
   render() {
-    if (this.guesses.length !== 0) {
-      if (arrayEqual(code, this.guesses[this.guesses.length - 1])) {
-        return <WinPage />;
-      } else if (
-        this.guesses[this.guesses.length - 1] !== code &&
-        this.guesses.length >= guessesAllowed
-      ) {
-        return <LosePage />;
-      } else {
-        return (
-          <div>
-            <div className="GuessInput">
-              <form id="input-form" autoComplete="off">
-                <input
-                  id="input"
-                  type="text"
-                  className="digit-input"
-                  required
-                ></input>
+    return (
+      <div>
+        <div className="GuessInput">
+          <form id="input-form" autoComplete="off">
+            <input
+              id="input"
+              type="text"
+              className="digit-input"
+              required
+            ></input>
 
-                <br></br>
-                <button onClick={this.handleClick} className="guess-button">
-                  Make Guess
-                </button>
-              </form>
-            </div>
-            <GuessHistory
-              guesses={this.state.guesses}
-              displayGuess={this.displayGuess}
-            />
-          </div>
-        );
-      }
-    }
+            <br></br>
+            <button onClick={this.handleClick} className="guess-button">
+              Make Guess
+            </button>
+          </form>
+        </div>
+        <GuessHistory guesses={this.state.guesses} />
+      </div>
+    );
   }
 }
+
 export default Game;
