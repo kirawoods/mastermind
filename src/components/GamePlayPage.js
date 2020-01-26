@@ -2,7 +2,6 @@ import React from "react";
 import "./GamePlayPage.css";
 import { Header } from "./Header";
 import Game from "./Game";
-import GuessInput from "./Game";
 
 export function GamePlayPage() {
   return (
