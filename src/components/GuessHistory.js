@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "./GuessHistory.css";
 import uniqueID from "uniqid";
-import axios from "axios";
 import arrayEqual from "array-equal";
 import { evaluateGuess, guessesAllowed } from "../evaluateGuesses";
 import { WinPage } from "./WinPage";
 import { LosePage } from "./LosePage";
+import axios from "axios";
 
 let code = [];
+
 axios
   .get(
     `https://www.random.org/integers/?num=4&min=0&max=7&col=4&base=10&format=plain&rnd=new`
@@ -18,7 +19,6 @@ axios
       .replace(/\s/g, "")
       .split("")
       .map(el => parseInt(el));
-    console.log(code);
   })
   .catch(error => {
     console.log(error);
@@ -34,11 +34,10 @@ const displayGuess = guess => {
 };
 
 class GuessHistory extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     console.log(this.props.guesses);
+    console.log(code);
+
     if (this.props.guesses.length !== 0) {
       if (arrayEqual(code, this.props.guesses[this.props.guesses.length - 1])) {
         return <WinPage />;

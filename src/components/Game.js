@@ -3,6 +3,7 @@ import "./Game.css";
 import GuessHistory from "./GuessHistory";
 import arrayEqual from "array-equal";
 import { codeLength, allowedDigits, guessesAllowed } from "../evaluateGuesses";
+import code from "../code";
 
 class Game extends Component {
   constructor(props) {
@@ -24,10 +25,10 @@ class Game extends Component {
   isGameOver = (code, guessObject) => {
     if (
       arrayEqual(code, guessObject[guessObject.length - 1]) ||
-      (this.props.guesses[this.props.guesses.length - 1] !== code &&
-        this.props.guesses.length >= guessesAllowed)
+      (guessObject[guessObject.length - 1] !== code &&
+        guessObject.length >= guessesAllowed)
     ) {
-      this.setState({ isGameOver: true });
+      return true;
     }
   };
 
@@ -39,7 +40,8 @@ class Game extends Component {
       const guessArray = Array.from(guess).map(el => parseInt(el));
 
       this.setState({
-        guesses: [...this.state.guesses, guessArray]
+        guesses: [...this.state.guesses, guessArray],
+        isGameOver: false
       });
 
       let form = document.getElementById("input-form");
