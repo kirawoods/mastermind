@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import "./Game.css";
 import GuessHistory from "./GuessHistory";
-import { codeLength, allowedDigits } from "../evaluateGuesses";
+import arrayEqual from "array-equal";
+import { codeLength, allowedDigits, guessesAllowed } from "../evaluateGuesses";
 
 class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      guesses: []
+      guesses: [],
+      isGameOver: false
     };
   }
 
@@ -17,6 +19,16 @@ class Game extends Component {
       value += digits * Math.pow(10, i);
     }
     return value;
+  };
+
+  isGameOver = (code, guessObject) => {
+    if (
+      arrayEqual(code, guessObject[guessObject.length - 1]) ||
+      (this.props.guesses[this.props.guesses.length - 1] !== code &&
+        this.props.guesses.length >= guessesAllowed)
+    ) {
+      this.setState({ isGameOver: true });
+    }
   };
 
   handleClick = e => {
@@ -54,7 +66,11 @@ class Game extends Component {
             ></input>
 
             <br></br>
-            <button onClick={this.handleClick} className="guess-button">
+            <button
+              onClick={this.handleClick}
+              className="guess-button"
+              disabled={this.state.isGameOver}
+            >
               Make Guess
             </button>
           </form>
