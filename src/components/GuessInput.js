@@ -1,32 +1,43 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import "./GuessInput.css";
 
-export function GuessInput() {
-  let [guesses, setGuesses] = useState([]);
+class GuessInput extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      guesses: []
+    };
+  }
 
-  const handleClick = e => {
+  handleClick = e => {
     e.preventDefault();
     const guess = document.getElementById("input").value;
     const guessArray = Array.from(guess).map(el => parseInt(el));
     console.log(guessArray);
-    setGuesses(guesses => [...guesses, guessArray]);
-    console.log(guesses);
+    this.setState({ guesses: [...this.state.guesses, guessArray] });
+    console.log(this.state);
     let form = document.getElementById("input-form");
     form.reset();
   };
+  render() {
+    return (
+      <div className="GuessInput">
+        <form id="input-form" autoComplete="off">
+          <input
+            id="input"
+            type="text"
+            className="digit-input"
+            required
+          ></input>
 
-  return (
-    <div className="GuessInput">
-      <form id="input-form" autoComplete="off">
-        <input id="input" type="text" className="digit-input" required></input>
-
-        <br></br>
-        <button onClick={handleClick} className="guess-button">
-          Make Guess
-        </button>
-      </form>
-    </div>
-  );
+          <br></br>
+          <button onClick={this.handleClick} className="guess-button">
+            Make Guess
+          </button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default GuessInput;
