@@ -8,8 +8,8 @@ export const allowedDigits = 7;
 export const evaluateGuess = (code, guess) => {
   let digitAndPositionCorrect = 0;
   let onlyDigitCorrect = 0;
-  let codeCopy = code;
-  let guessCopy = guess;
+  let codeCopy = code.slice(0, code.length);
+  let guessCopy = guess.slice(0, guess.length);
   for (let i = 0; i <= codeLengthMinusOne; i++) {
     if (code[i] === guess[i]) {
       digitAndPositionCorrect++;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./GuessInput.css";
+import "./Game.css";
 import GuessHistory from "./GuessHistory";
 
-class GuessInput extends Component {
+class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,4 +44,4 @@ class GuessInput extends Component {
   }
 }
 
-export default GuessInput;
+export default Game;

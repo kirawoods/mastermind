@@ -1,8 +1,8 @@
 import React from "react";
 import "./GamePlayPage.css";
 import { Header } from "./Header";
-import GuessHistory from "./GuessHistory";
-import GuessInput from "./GuessInput";
+import Game from "./Game";
+import GuessInput from "./Game";
 
 export function GamePlayPage() {
   return (
@@ -11,8 +11,7 @@ export function GamePlayPage() {
         <Header />
       </div>
       <div className="gameplay">
-        <GuessInput />
-        {/* <GuessHistory /> */}
+        <Game />
       </div>
     </div>
   );
