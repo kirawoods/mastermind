@@ -4,6 +4,8 @@ import uniqueID from "uniqid";
 import axios from "axios";
 import arrayEqual from "array-equal";
 import { evaluateGuess, guessesAllowed } from "../evaluateGuesses";
+import { WinPage } from "./WinPage";
+import { LosePage } from "./LosePage";
 
 let code = [];
 axios
@@ -39,12 +41,12 @@ class GuessHistory extends Component {
     console.log(this.props.guesses);
     if (this.props.guesses.length !== 0) {
       if (arrayEqual(code, this.props.guesses[this.props.guesses.length - 1])) {
-        return "You Won!";
+        return <WinPage />;
       } else if (
         this.props.guesses[this.props.guesses.length - 1] !== code &&
         this.props.guesses.length >= guessesAllowed
       ) {
-        return "You Lost :(";
+        return <LosePage />;
       } else {
         return (
           <div className="GuessHistory">
