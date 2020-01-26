@@ -1,12 +1,14 @@
 import React from "react";
 import "./GuessHistory.css";
 import { guesses } from "./GuessInput";
-import { evaluateGuesses } from "../evaluateGuesses";
+import { evaluateGuess } from "../evaluateGuesses";
 
 const displayGuess = guess => {
+  console.log(guess);
   return (
-    <div className="each-guess">
-      <div className="guess">{guess}</div>
+    <div key={Date.now()} className="each-guess">
+      <div className="guess">{guess.toString()}</div>
+      <div className="feedback">{evaluateGuess([0, 2, 2, 3], guess)}</div>
     </div>
   );
 };
@@ -20,9 +22,7 @@ export function GuessHistory() {
           <div className="guess">Guess</div>
           <div className="feedback">Feedback</div>
         </div>
-        {guesses.map(guess => (
-          <div>{displayGuess(guess)} </div>
-        ))}
+        {guesses.map(guess => displayGuess(guess))}
       </div>
     </div>
   );

@@ -2,7 +2,10 @@ import React from "react";
 import "./GuessInput.css";
 import { codeLength, allowedDigits } from "../evaluateGuesses";
 
-export let guesses = [[0, 0, 0, 0]];
+export let guesses = [
+  [0, 1, 1, 1],
+  [4, 5, 6, 7]
+];
 
 const handleClick = e => {
   e.preventDefault();
