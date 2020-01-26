@@ -8,6 +8,7 @@ export const allowedDigits = 7;
 export const evaluateGuess = (code, guess) => {
   let digitAndPositionCorrect = 0;
   let onlyDigitCorrect = 0;
+  let incorrectDigits = 0;
   let codeCopy = code.slice(0, code.length);
   let guessCopy = guess.slice(0, guess.length);
   for (let i = 0; i <= codeLengthMinusOne; i++) {
@@ -27,12 +28,19 @@ export const evaluateGuess = (code, guess) => {
       }).length
     );
   }
-  return (
-    "Correct Digit and Position: " +
-    digitAndPositionCorrect +
-    " Correct Digit and Incorrect Position: " +
-    onlyDigitCorrect
-  );
+  incorrectDigits = codeLength - digitAndPositionCorrect - onlyDigitCorrect;
+
+  let feedback = "";
+  for (let i = 0; i <= digitAndPositionCorrect - 1; i++) {
+    feedback += "X";
+  }
+  for (let i = 0; i <= onlyDigitCorrect - 1; i++) {
+    feedback += "O";
+  }
+  for (let i = 0; i <= incorrectDigits - 1; i++) {
+    feedback += "-";
+  }
+  return feedback;
 };
 
 export const evaluateGuesses = (code, guesses) => {
