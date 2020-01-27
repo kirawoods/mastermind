@@ -64,14 +64,18 @@ class Game extends Component {
 
     return (
       <div>
-        <div className="currentGuess">{this.state.newGuessArray}</div>
-        <div className="input-buttons">{this.renderButtons(allowedDigits)}</div>
-        <button
-          className="guess-button"
-          onClick={() => this.handleSubmitButtonClick()}
-        >
-          Make Guess
-        </button>
+        <div className="guess-input">
+          <div className="currentGuess">{this.state.newGuessArray}</div>
+          <div className="input-buttons">
+            {this.renderButtons(allowedDigits)}
+          </div>
+          <button
+            className="guess-button"
+            onClick={() => this.handleSubmitButtonClick()}
+          >
+            Make Guess
+          </button>
+        </div>
         <GuessHistory guesses={this.state.guesses} code={this.state.code} />
       </div>
     );
