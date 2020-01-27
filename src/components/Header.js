@@ -5,6 +5,7 @@ export function Header() {
   return (
     <div className="Header">
       <h1 className="header-text">Mastermind</h1>
+
       <div className="rules">
         <p>
           Rules: The computer has chosen a secret 4 digit code that you must
