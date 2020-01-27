@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import "./GuessHistory.css";
 import uniqueID from "uniqid";
-import arrayEqual from "array-equal";
 import { evaluateGuess, guessesAllowed } from "../evaluateGuesses";
 
-const displayGuess = (code, guess) => {
+const displayGuess = (code, guess, codeLength) => {
   return (
     <div key={uniqueID()} className="each-guess">
       <div className="guess">{guess.join("")}</div>
-      <div className="feedback">{evaluateGuess(code, guess)}</div>
+      <div className="feedback">{evaluateGuess(code, guess, codeLength)}</div>
     </div>
   );
 };
@@ -29,7 +28,7 @@ class GuessHistory extends Component {
             <div className="history-label-text">Feedback</div>
           </div>
           {this.props.guesses.map(guess =>
-            displayGuess(this.props.code, guess)
+            displayGuess(this.props.code, guess, this.props.codeLength)
           )}
         </div>
       </div>

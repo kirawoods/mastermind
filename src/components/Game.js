@@ -3,7 +3,7 @@ import "./Game.css";
 import arrayEqual from "array-equal";
 import ReactLoading from "react-loading";
 import GuessHistory from "./GuessHistory";
-import { guessesAllowed, codeLength, allowedDigits } from "../evaluateGuesses";
+import { guessesAllowed, allowedDigits } from "../evaluateGuesses";
 import { getRandomCode } from "../getRandomCode";
 import { WinPage } from "./WinPage";
 import { LosePage } from "./LosePage";
@@ -15,14 +15,15 @@ class Game extends Component {
     this.state = {
       newGuessArray: [],
       guesses: [],
-      code: undefined
+      code: undefined,
+      codeLength: 5
     };
     document.addEventListener("keypress", e => {
       let keyValue = parseInt(String.fromCharCode(e.keyCode));
 
       console.log(e.keyCode);
       if (
-        this.state.newGuessArray.length <= codeLength - 1 &&
+        this.state.newGuessArray.length <= this.state.codeLength - 1 &&
         keyValue >= 0 &&
         keyValue <= allowedDigits
       ) {
@@ -31,7 +32,7 @@ class Game extends Component {
         });
       } else if (
         e.keyCode === 13 &&
-        this.state.newGuessArray.length === codeLength
+        this.state.newGuessArray.length === this.state.codeLength
       ) {
         this.setState({
           guesses: [...this.state.guesses, this.state.newGuessArray]
@@ -49,11 +50,13 @@ class Game extends Component {
   }
 
   componentWillMount() {
-    getRandomCode().then(newCode => this.setState({ code: newCode }));
+    getRandomCode(this.state.codeLength).then(newCode =>
+      this.setState({ code: newCode })
+    );
   }
 
   handleInputButtonClick = value => {
-    if (this.state.newGuessArray.length < codeLength) {
+    if (this.state.newGuessArray.length < this.state.codeLength) {
       this.setState({
         newGuessArray: [...this.state.newGuessArray, value]
       });
@@ -62,7 +65,7 @@ class Game extends Component {
   };
 
   handleSubmitButtonClick = () => {
-    if (this.state.newGuessArray.length === codeLength) {
+    if (this.state.newGuessArray.length === this.state.codeLength) {
       this.setState({
         guesses: [...this.state.guesses, this.state.newGuessArray]
       });
@@ -142,7 +145,11 @@ class Game extends Component {
                 Clear (C)
               </button>
             </div>
-            <GuessHistory guesses={this.state.guesses} code={this.state.code} />
+            <GuessHistory
+              guesses={this.state.guesses}
+              code={this.state.code}
+              codeLength={this.state.codeLength}
+            />
           </div>
         );
       }

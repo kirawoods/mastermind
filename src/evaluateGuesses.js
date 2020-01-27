@@ -1,15 +1,13 @@
 export const guessesAllowed = 10;
-export const codeLength = 4;
-export const codeLengthMinusOne = codeLength - 1;
 export const allowedDigits = 7;
 
-export const evaluateGuess = (code, guess) => {
+export const evaluateGuess = (code, guess, codeLength) => {
   let digitAndPositionCorrect = 0;
   let onlyDigitCorrect = 0;
   let incorrectDigits = 0;
   let codeCopy = code.slice(0, code.length);
   let guessCopy = guess.slice(0, guess.length);
-  for (let i = 0; i <= codeLengthMinusOne; i++) {
+  for (let i = 0; i <= codeLength - 1; i++) {
     if (code[i] === guess[i]) {
       digitAndPositionCorrect++;
       codeCopy.splice(i, 1, null);
