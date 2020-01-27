@@ -10,7 +10,8 @@ class Game extends Component {
     this.state = {
       newGuessArray: [],
       guesses: [],
-      isGameOver: false
+      isGameOver: false,
+      code: [1, 2, 3, 4]
     };
   }
 
@@ -65,7 +66,7 @@ class Game extends Component {
         >
           Make Guess
         </button>
-        <GuessHistory guesses={this.state.guesses} />
+        <GuessHistory guesses={this.state.guesses} code={this.state.code} />
       </div>
     );
   }

@@ -5,26 +5,8 @@ import arrayEqual from "array-equal";
 import { evaluateGuess, guessesAllowed } from "../evaluateGuesses";
 import { WinPage } from "./WinPage";
 import { LosePage } from "./LosePage";
-import axios from "axios";
 
-let code = [0, 0, 0, 0];
-
-axios
-  .get(
-    `https://www.random.org/integers/?num=4&min=0&max=7&col=4&base=10&format=plain&rnd=new`
-  )
-  .then(response => {
-    const codeInfo = response.data;
-    code = codeInfo
-      .replace(/\s/g, "")
-      .split("")
-      .map(el => parseInt(el));
-  })
-  .catch(error => {
-    console.log(error);
-  });
-
-const displayGuess = guess => {
+const displayGuess = (code, guess) => {
   return (
     <div key={uniqueID()} className="each-guess">
       <div className="guess">{guess.join("")}</div>
@@ -36,13 +18,18 @@ const displayGuess = guess => {
 class GuessHistory extends Component {
   render() {
     console.log(this.props.guesses);
-    console.log(code);
+    console.log(this.props.code);
 
     if (this.props.guesses.length !== 0) {
-      if (arrayEqual(code, this.props.guesses[this.props.guesses.length - 1])) {
+      if (
+        arrayEqual(
+          this.props.code,
+          this.props.guesses[this.props.guesses.length - 1]
+        )
+      ) {
         return <WinPage />;
       } else if (
-        this.props.guesses[this.props.guesses.length - 1] !== code &&
+        this.props.guesses[this.props.guesses.length - 1] !== this.props.code &&
         this.props.guesses.length >= guessesAllowed
       ) {
         return <LosePage />;
@@ -57,7 +44,9 @@ class GuessHistory extends Component {
                 <div className="guess">Guess</div>
                 <div className="feedback">Feedback</div>
               </div>
-              {this.props.guesses.map(guess => displayGuess(guess))}
+              {this.props.guesses.map(guess =>
+                displayGuess(this.props.code, guess)
+              )}
             </div>
           </div>
         );
