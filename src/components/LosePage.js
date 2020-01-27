@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./LosePage.css";
-import { render } from "@testing-library/react";
 
 export class LosePage extends Component {
   constructor(props) {
