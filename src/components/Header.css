@@ -5,13 +5,12 @@
   border-radius: 2px 2px 0px 0px;
   min-height: 97.5vh;
   width: 35%;
+  text-align: center;
 }
 
-.header-text {
-  text-align: center;
-  color: white;
-  font-size: 55px;
-  padding: 20px;
+.logo {
+  margin: 50px;
+  max-width: 300px;
 }
 
 .rules {
@@ -19,6 +18,7 @@
   font-size: 25px;
   border-radius: 2px;
   margin: 20px;
+  text-align: left;
 }
 
 .rules-bullet-list {

@@ -21,12 +21,12 @@ class GuessHistory extends Component {
     return (
       <div className="GuessHistory">
         <div className="guess-history-container">
-          <p className="guesses-remaining">
+          <div className="history-label-text">
             Guesses Remaining: {guessesAllowed - this.props.guesses.length}
-          </p>
+          </div>
           <div className="guess-header">
-            <div className="guess">Guess</div>
-            <div className="feedback">Feedback</div>
+            <div className="history-label-text">Guess</div>
+            <div className="history-label-text">Feedback</div>
           </div>
           {this.props.guesses.map(guess =>
             displayGuess(this.props.code, guess)

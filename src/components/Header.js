@@ -1,11 +1,11 @@
 import React from "react";
 import "./Header.css";
+import Logo from "./MastermindLogo.PNG";
 
 export function Header() {
   return (
     <div className="Header">
-      <h1 className="header-text">Mastermind</h1>
-
+      <img className="logo" src={Logo}></img>
       <div className="rules">
         <p>
           Rules: The computer has chosen a secret 4 digit code that you must
