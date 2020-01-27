@@ -1,7 +1,11 @@
 import React, { Component, useEffect } from "react";
 import "./Game.css";
+import arrayEqual from "array-equal";
 import GuessHistory from "./GuessHistory";
+import { guessesAllowed } from "../evaluateGuesses";
 import { getRandomCode } from "../getRandomCode";
+import { WinPage } from "./WinPage";
+import { LosePage } from "./LosePage";
 
 import { codeLength, allowedDigits } from "../evaluateGuesses";
 
@@ -61,24 +65,57 @@ class Game extends Component {
     if (this.state.code === undefined) {
       return null;
     }
-
-    return (
-      <div>
-        <div className="guess-input">
-          <div className="currentGuess">{this.state.newGuessArray}</div>
-          <div className="input-buttons">
-            {this.renderButtons(allowedDigits)}
+    if (this.state.guesses.length !== 0) {
+      if (
+        arrayEqual(
+          this.state.code,
+          this.state.guesses[this.state.guesses.length - 1]
+        )
+      ) {
+        return <WinPage />;
+      } else if (
+        this.state.guesses[this.state.guesses.length - 1] !== this.state.code &&
+        this.state.guesses.length >= guessesAllowed
+      ) {
+        return <LosePage />;
+      } else {
+        return (
+          <div>
+            <div className="guess-input">
+              <div className="currentGuess">{this.state.newGuessArray}</div>
+              <div className="input-buttons">
+                {this.renderButtons(allowedDigits)}
+              </div>
+              <button
+                className="guess-button"
+                onClick={() => this.handleSubmitButtonClick()}
+              >
+                Make Guess
+              </button>
+            </div>
+            <GuessHistory guesses={this.state.guesses} code={this.state.code} />
           </div>
-          <button
-            className="guess-button"
-            onClick={() => this.handleSubmitButtonClick()}
-          >
-            Make Guess
-          </button>
+        );
+      }
+    } else {
+      return (
+        <div>
+          <div className="guess-input">
+            <div className="currentGuess">{this.state.newGuessArray}</div>
+            <div className="input-buttons">
+              {this.renderButtons(allowedDigits)}
+            </div>
+            <button
+              className="guess-button"
+              onClick={() => this.handleSubmitButtonClick()}
+            >
+              Make Guess
+            </button>
+          </div>
+          <GuessHistory guesses={this.state.guesses} code={this.state.code} />
         </div>
-        <GuessHistory guesses={this.state.guesses} code={this.state.code} />
-      </div>
-    );
+      );
+    }
   }
 }
 
