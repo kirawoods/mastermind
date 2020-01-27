@@ -59,3 +59,14 @@ input::-webkit-inner-spin-button {
   border-radius: 2px;
   font-size: 20px;
 }
+
+.clear-button {
+  margin: 10px;
+  background-color: #0073b1;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 20px;
+}

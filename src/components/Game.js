@@ -20,6 +20,8 @@ class Game extends Component {
       console.log(e.keyCode);
 
       let keyValue = parseInt(String.fromCharCode(e.keyCode));
+
+      console.log(e.keyCode);
       if (
         this.state.newGuessArray.length <= codeLength - 1 &&
         keyValue >= 0 &&
@@ -38,6 +40,9 @@ class Game extends Component {
         this.setState({
           newGuessArray: []
         });
+      } else if (e.keyCode === 8) {
+        this.setState({ newGuessArray: [] });
+        e.preventDefault();
       }
       console.log(this.state.guesses);
       console.log(this.state.newGuessArray);
@@ -67,6 +72,12 @@ class Game extends Component {
       });
       console.log(this.state.guesses);
     }
+  };
+
+  handleClear = () => {
+    this.setState({
+      newGuessArray: []
+    });
   };
 
   renderButtons = digits => {
@@ -117,6 +128,12 @@ class Game extends Component {
               >
                 Make Guess
               </button>
+              <button
+                className="clear-button"
+                onClick={() => this.handleClear()}
+              >
+                Clear
+              </button>
             </div>
             <GuessHistory guesses={this.state.guesses} code={this.state.code} />
           </div>
@@ -135,6 +152,9 @@ class Game extends Component {
               onClick={() => this.handleSubmitButtonClick()}
             >
               Make Guess
+            </button>
+            <button className="clear-button" onClick={() => this.handleClear()}>
+              Clear
             </button>
           </div>
           <GuessHistory guesses={this.state.guesses} code={this.state.code} />
