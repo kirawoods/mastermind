@@ -7,7 +7,7 @@ import { WinPage } from "./WinPage";
 import { LosePage } from "./LosePage";
 import axios from "axios";
 
-let code = [];
+let code = [0, 0, 0, 0];
 
 axios
   .get(
