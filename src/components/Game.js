@@ -11,7 +11,6 @@ class Game extends Component {
     this.state = {
       newGuessArray: [],
       guesses: [],
-      isGameOver: false,
       code: undefined
     };
   }
@@ -23,9 +22,7 @@ class Game extends Component {
   handleInputButtonClick = value => {
     if (this.state.newGuessArray.length < codeLength) {
       this.setState({
-        newGuessArray: [...this.state.newGuessArray, value],
-        guesses: [],
-        isGameOver: false
+        newGuessArray: [...this.state.newGuessArray, value]
       });
       console.log(this.state.newGuessArray);
     }
