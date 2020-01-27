@@ -8,6 +8,10 @@
   font-size: 50px;
 }
 
+.code-display {
+  font-size: 40px;
+}
+
 .play-again-button {
   margin: 10px;
   background-color: #0073b1;

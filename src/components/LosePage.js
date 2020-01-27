@@ -16,7 +16,7 @@ export class LosePage extends Component {
     return (
       <div className="LosePage">
         <h1 className="lose-header">You Lost :(</h1>
-        <p>The code was {this.props.code}</p>
+        <p className="code-display">The code was {this.props.code}</p>
         <button
           className="play-again-button"
           onClick={() => window.location.reload()}
