@@ -1,22 +1,47 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import "./Game.css";
 import arrayEqual from "array-equal";
 import GuessHistory from "./GuessHistory";
-import { guessesAllowed } from "../evaluateGuesses";
+import { guessesAllowed, codeLength, allowedDigits } from "../evaluateGuesses";
 import { getRandomCode } from "../getRandomCode";
 import { WinPage } from "./WinPage";
 import { LosePage } from "./LosePage";
 
-import { codeLength, allowedDigits } from "../evaluateGuesses";
-
 class Game extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       newGuessArray: [],
       guesses: [],
       code: undefined
     };
+    document.addEventListener("keypress", e => {
+      console.log(e.keyCode);
+
+      let keyValue = parseInt(String.fromCharCode(e.keyCode));
+      if (
+        this.state.newGuessArray.length <= codeLength - 1 &&
+        keyValue >= 0 &&
+        keyValue <= allowedDigits
+      ) {
+        this.setState({
+          newGuessArray: [...this.state.newGuessArray, keyValue]
+        });
+      } else if (
+        e.keyCode === 13 &&
+        this.state.newGuessArray.length === codeLength
+      ) {
+        this.setState({
+          guesses: [...this.state.guesses, this.state.newGuessArray]
+        });
+        this.setState({
+          newGuessArray: []
+        });
+      }
+      console.log(this.state.guesses);
+      console.log(this.state.newGuessArray);
+    });
   }
 
   componentWillMount() {
