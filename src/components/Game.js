@@ -63,7 +63,7 @@ class Game extends Component {
 
   render() {
     if (this.state.code === undefined) {
-      return null;
+      return <div className="Game"></div>;
     }
     if (this.state.guesses.length !== 0) {
       if (
