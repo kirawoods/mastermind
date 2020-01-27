@@ -17,8 +17,6 @@ class Game extends Component {
       code: undefined
     };
     document.addEventListener("keypress", e => {
-      console.log(e.keyCode);
-
       let keyValue = parseInt(String.fromCharCode(e.keyCode));
 
       console.log(e.keyCode);
@@ -40,7 +38,7 @@ class Game extends Component {
         this.setState({
           newGuessArray: []
         });
-      } else if (e.keyCode === 8) {
+      } else if (String.fromCharCode(e.keyCode).toLowerCase() === "c") {
         this.setState({ newGuessArray: [] });
         e.preventDefault();
       }
@@ -132,7 +130,7 @@ class Game extends Component {
                 className="clear-button"
                 onClick={() => this.handleClear()}
               >
-                Clear
+                Clear (C)
               </button>
             </div>
             <GuessHistory guesses={this.state.guesses} code={this.state.code} />
@@ -154,7 +152,7 @@ class Game extends Component {
               Make Guess
             </button>
             <button className="clear-button" onClick={() => this.handleClear()}>
-              Clear
+              Clear (C)
             </button>
           </div>
           <GuessHistory guesses={this.state.guesses} code={this.state.code} />
