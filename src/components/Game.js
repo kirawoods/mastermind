@@ -11,7 +11,7 @@ class Game extends Component {
       newGuessArray: [],
       guesses: [],
       isGameOver: false,
-      code: [1, 2, 3, 4]
+      code: undefined
     };
   }
 
@@ -56,6 +56,10 @@ class Game extends Component {
   };
 
   render() {
+    if (this.state.code === undefined) {
+      return null;
+    }
+
     return (
       <div>
         <div className="currentGuess">{this.state.newGuessArray}</div>
