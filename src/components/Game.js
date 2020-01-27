@@ -17,7 +17,8 @@ class Game extends Component {
       guesses: [],
       code: undefined,
       codeLength: 4,
-      hintNumber: 0
+      hintNumber: 0,
+      hints: []
     };
     document.addEventListener("keypress", e => {
       let keyValue = parseInt(String.fromCharCode(e.keyCode));
@@ -90,13 +91,17 @@ class Game extends Component {
       });
       let number = this.state.hintNumber;
       let nth = ["first", "second", "third", "fourth", "fifth"];
-      console.log(
+      let hint =
         "The " +
-          nth[this.state.hintNumber] +
-          " number of the code is " +
-          this.state.code[number]
-      );
+        nth[this.state.hintNumber] +
+        " number of the code is " +
+        this.state.code[number];
+      this.setState({
+        hints: [...this.state.hints, hint]
+      });
+      console.log(hint);
       console.log(this.state.hintNumber);
+      console.log(this.state.hints);
     }
   };
 
@@ -188,6 +193,14 @@ class Game extends Component {
               >
                 Clear (C)
               </button>
+              <button className="hint-button" onClick={() => this.handleHint()}>
+                Hint
+              </button>
+              <div>
+                {this.state.hints.map(hint => (
+                  <p>{hint}</p>
+                ))}
+              </div>
             </div>
             <GuessHistory
               guesses={this.state.guesses}
@@ -243,6 +256,11 @@ class Game extends Component {
             <button className="hint-button" onClick={() => this.handleHint()}>
               Hint
             </button>
+            <div>
+              {this.state.hints.map(hint => (
+                <p>{hint}</p>
+              ))}
+            </div>
           </div>
           <GuessHistory guesses={this.state.guesses} code={this.state.code} />
         </div>
