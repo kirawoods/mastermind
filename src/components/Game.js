@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Game.css";
 import arrayEqual from "array-equal";
+import ReactLoading from "react-loading";
 import GuessHistory from "./GuessHistory";
 import { guessesAllowed, codeLength, allowedDigits } from "../evaluateGuesses";
 import { getRandomCode } from "../getRandomCode";
@@ -97,7 +98,15 @@ class Game extends Component {
 
   render() {
     if (this.state.code === undefined) {
-      return <div className="Game"></div>;
+      return (
+        <ReactLoading
+          className="loading"
+          type="bubbles"
+          color="black"
+          height="20%"
+          width="20%"
+        />
+      );
     }
     if (this.state.guesses.length !== 0) {
       if (
