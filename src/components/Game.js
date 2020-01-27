@@ -80,7 +80,7 @@ class Game extends Component {
         return <LosePage />;
       } else {
         return (
-          <div>
+          <div className="Game">
             <div className="guess-input">
               <div className="currentGuess">{this.state.newGuessArray}</div>
               <div className="input-buttons">
@@ -99,7 +99,7 @@ class Game extends Component {
       }
     } else {
       return (
-        <div>
+        <div className="Game">
           <div className="guess-input">
             <div className="currentGuess">{this.state.newGuessArray}</div>
             <div className="input-buttons">

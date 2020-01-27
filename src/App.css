@@ -4,7 +4,8 @@
   width: 100%;
   margin: 0px auto;
   background-color: #caccce;
-  height: 100vh;
+  min-height: 100vh;
   font-family: "Source Sans Pro", sans-serif;
   border-radius: 2px;
+  display: flex;
 }
