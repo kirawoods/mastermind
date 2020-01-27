@@ -20,10 +20,10 @@ class GuessHistory extends Component {
 
     return (
       <div className="GuessHistory">
-        <p className="guesses-remaining">
-          Guesses Remaining: {guessesAllowed - this.props.guesses.length}
-        </p>
         <div className="guess-history-container">
+          <p className="guesses-remaining">
+            Guesses Remaining: {guessesAllowed - this.props.guesses.length}
+          </p>
           <div className="guess-header">
             <div className="guess">Guess</div>
             <div className="feedback">Feedback</div>

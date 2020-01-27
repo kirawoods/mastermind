@@ -17,11 +17,11 @@ export function Header() {
             an X)
           </li>
           <li className="rules-bullet">
-            how many digits are correct and in the incorrect position (denoted
-            by an O)
+            how many digits are correct and in an incorrect position (denoted by
+            an O)
           </li>
           <li className="rules-bullet">
-            how many digits are incorrect (denoted by an -)
+            how many digits are incorrect (denoted by a -)
           </li>
         </ul>
       </div>
