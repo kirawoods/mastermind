@@ -16,7 +16,8 @@ class Game extends Component {
       newGuessArray: [],
       guesses: [],
       code: undefined,
-      codeLength: 5
+      codeLength: 4,
+      hintNumber: 0
     };
     document.addEventListener("keypress", e => {
       let keyValue = parseInt(String.fromCharCode(e.keyCode));
@@ -49,7 +50,7 @@ class Game extends Component {
     });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     getRandomCode(this.state.codeLength).then(newCode =>
       this.setState({ code: newCode })
     );
@@ -80,6 +81,23 @@ class Game extends Component {
     this.setState({
       newGuessArray: []
     });
+  };
+
+  handleHint = () => {
+    if (this.state.hintNumber + 1 <= this.state.codeLength) {
+      this.setState({
+        hintNumber: this.state.hintNumber + 1
+      });
+      let number = this.state.hintNumber;
+      let nth = ["first", "second", "third", "fourth", "fifth"];
+      console.log(
+        "The " +
+          nth[this.state.hintNumber] +
+          " number of the code is " +
+          this.state.code[number]
+      );
+      console.log(this.state.hintNumber);
+    }
   };
 
   renderButtons = digits => {
@@ -127,6 +145,32 @@ class Game extends Component {
       } else {
         return (
           <div className="Game">
+            {/* <div className="difficulty-buttons">
+              <button
+                className="difficulty-button easy"
+                onClick={() => {
+                  this.setState({ codeLength: 3 });
+                }}
+              >
+                Easy
+              </button>
+              <button
+                className="difficulty-button medium"
+                onClick={() => {
+                  this.setState({ codeLength: 4 });
+                }}
+              >
+                Medium
+              </button>
+              <button
+                className="difficulty-button expert"
+                onClick={() => {
+                  this.setState({ codeLength: 5 });
+                }}
+              >
+                Expert
+              </button>
+            </div> */}
             <div className="guess-input">
               <div className="currentGuess">{this.state.newGuessArray}</div>
               <div className="input-buttons">
@@ -156,6 +200,32 @@ class Game extends Component {
     } else {
       return (
         <div className="Game">
+          {/* <div className="difficulty-buttons">
+            <button
+              className="difficulty-button easy"
+              onClick={() => {
+                this.setState({ codeLength: 3 });
+              }}
+            >
+              Easy
+            </button>
+            <button
+              className="difficulty-button medium"
+              onClick={() => {
+                this.setState({ codeLength: 4 });
+              }}
+            >
+              Medium
+            </button>
+            <button
+              className="difficulty-button expert"
+              onClick={() => {
+                this.setState({ codeLength: 5 });
+              }}
+            >
+              Expert
+            </button>
+          </div> */}
           <div className="guess-input">
             <div className="currentGuess">{this.state.newGuessArray}</div>
             <div className="input-buttons">
@@ -169,6 +239,9 @@ class Game extends Component {
             </button>
             <button className="clear-button" onClick={() => this.handleClear()}>
               Clear (C)
+            </button>
+            <button className="hint-button" onClick={() => this.handleHint()}>
+              Hint
             </button>
           </div>
           <GuessHistory guesses={this.state.guesses} code={this.state.code} />

@@ -6,6 +6,22 @@
   margin: auto;
 }
 
+.difficulty-buttons {
+  text-align: center;
+  margin: 10px;
+}
+
+.difficulty-button {
+  margin: 10px;
+  background-color: #0073b1;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 20px;
+}
+
 .GuessInput {
   padding: 30px 10px 0px 10px;
   text-align: center;
@@ -15,14 +31,6 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-.digit-input {
-  width: 200px;
-  height: 50px;
-  border-radius: 5px;
-  font-size: 40px;
-  text-align: center;
 }
 
 .guess-input {
@@ -49,7 +57,7 @@ input::-webkit-inner-spin-button {
   width: 200px;
   font-size: 50px;
   color: #313335;
-  border: #313335 2px solid;
+  background-color: white;
   border-radius: 2px;
 }
 
@@ -65,6 +73,16 @@ input::-webkit-inner-spin-button {
 }
 
 .clear-button {
+  margin: 10px;
+  background-color: #0073b1;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 20px;
+}
+.hint-button {
   margin: 10px;
   background-color: #0073b1;
   color: #fff;
