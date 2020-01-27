@@ -111,7 +111,7 @@ class Game extends Component {
         this.state.guesses[this.state.guesses.length - 1] !== this.state.code &&
         this.state.guesses.length >= guessesAllowed
       ) {
-        return <LosePage />;
+        return <LosePage code={this.state.code} />;
       } else {
         return (
           <div className="Game">
