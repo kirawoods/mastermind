@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import "./Game.css";
 import GuessHistory from "./GuessHistory";
+import { getRandomCode } from "../getRandomCode";
 
 import { codeLength, allowedDigits } from "../evaluateGuesses";
 
@@ -13,6 +14,10 @@ class Game extends Component {
       isGameOver: false,
       code: undefined
     };
+  }
+
+  componentWillMount() {
+    getRandomCode().then(newCode => this.setState({ code: newCode }));
   }
 
   handleInputButtonClick = value => {
