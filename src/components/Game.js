@@ -16,16 +16,17 @@ class Game extends Component {
       newGuessArray: [],
       guesses: [],
       code: undefined,
-      codeLength: 4,
+
       hintNumber: 0,
       hints: []
     };
+
     document.addEventListener("keypress", e => {
       let keyValue = parseInt(String.fromCharCode(e.keyCode));
 
       console.log(e.keyCode);
       if (
-        this.state.newGuessArray.length <= this.state.codeLength - 1 &&
+        this.state.newGuessArray.length <= this.props.codeLength - 1 &&
         keyValue >= 0 &&
         keyValue <= allowedDigits
       ) {
@@ -34,7 +35,7 @@ class Game extends Component {
         });
       } else if (
         e.keyCode === 13 &&
-        this.state.newGuessArray.length === this.state.codeLength
+        this.state.newGuessArray.length === this.props.codeLength
       ) {
         this.setState({
           guesses: [...this.state.guesses, this.state.newGuessArray]
@@ -52,13 +53,13 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    getRandomCode(this.state.codeLength).then(newCode =>
+    getRandomCode(this.props.codeLength).then(newCode =>
       this.setState({ code: newCode })
     );
   }
 
   handleInputButtonClick = value => {
-    if (this.state.newGuessArray.length < this.state.codeLength) {
+    if (this.state.newGuessArray.length < this.props.codeLength) {
       this.setState({
         newGuessArray: [...this.state.newGuessArray, value]
       });
@@ -67,7 +68,7 @@ class Game extends Component {
   };
 
   handleSubmitButtonClick = () => {
-    if (this.state.newGuessArray.length === this.state.codeLength) {
+    if (this.state.newGuessArray.length === this.props.codeLength) {
       this.setState({
         guesses: [...this.state.guesses, this.state.newGuessArray]
       });
@@ -85,7 +86,7 @@ class Game extends Component {
   };
 
   handleHint = () => {
-    if (this.state.hintNumber + 1 <= this.state.codeLength) {
+    if (this.state.hintNumber + 1 <= this.props.codeLength) {
       this.setState({
         hintNumber: this.state.hintNumber + 1
       });
@@ -150,32 +151,6 @@ class Game extends Component {
       } else {
         return (
           <div className="Game">
-            {/* <div className="difficulty-buttons">
-              <button
-                className="difficulty-button easy"
-                onClick={() => {
-                  this.setState({ codeLength: 3 });
-                }}
-              >
-                Easy
-              </button>
-              <button
-                className="difficulty-button medium"
-                onClick={() => {
-                  this.setState({ codeLength: 4 });
-                }}
-              >
-                Medium
-              </button>
-              <button
-                className="difficulty-button expert"
-                onClick={() => {
-                  this.setState({ codeLength: 5 });
-                }}
-              >
-                Expert
-              </button>
-            </div> */}
             <div className="guess-input">
               <div className="currentGuess">{this.state.newGuessArray}</div>
               <div className="input-buttons">
@@ -205,7 +180,7 @@ class Game extends Component {
             <GuessHistory
               guesses={this.state.guesses}
               code={this.state.code}
-              codeLength={this.state.codeLength}
+              codeLength={this.props.codeLength}
             />
           </div>
         );
@@ -213,32 +188,6 @@ class Game extends Component {
     } else {
       return (
         <div className="Game">
-          {/* <div className="difficulty-buttons">
-            <button
-              className="difficulty-button easy"
-              onClick={() => {
-                this.setState({ codeLength: 3 });
-              }}
-            >
-              Easy
-            </button>
-            <button
-              className="difficulty-button medium"
-              onClick={() => {
-                this.setState({ codeLength: 4 });
-              }}
-            >
-              Medium
-            </button>
-            <button
-              className="difficulty-button expert"
-              onClick={() => {
-                this.setState({ codeLength: 5 });
-              }}
-            >
-              Expert
-            </button>
-          </div> */}
           <div className="guess-input">
             <div className="currentGuess">{this.state.newGuessArray}</div>
             <div className="input-buttons">
