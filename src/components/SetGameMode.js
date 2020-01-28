@@ -3,13 +3,6 @@ import "./SetGameMode.css";
 import Logo from "./MastermindLogo.PNG";
 
 class SetGameMode extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      codeLength: undefined
-    };
-  }
   render() {
     return (
       <div className="SetGameMode">
@@ -18,8 +11,7 @@ class SetGameMode extends Component {
           <button
             className="difficulty-button easy"
             onClick={() => {
-              this.setState({ codeLength: 3 });
-              console.log(this.state.codeLength);
+              this.props.onChange(3);
             }}
           >
             Easy
@@ -27,8 +19,7 @@ class SetGameMode extends Component {
           <button
             className="difficulty-button medium"
             onClick={() => {
-              this.setState({ codeLength: 4 });
-              console.log(this.state.codeLength);
+              this.props.onChange(4);
             }}
           >
             Medium
@@ -36,8 +27,7 @@ class SetGameMode extends Component {
           <button
             className="difficulty-button expert"
             onClick={() => {
-              this.setState({ codeLength: 5 });
-              console.log(this.state.codeLength);
+              this.props.onChange(5);
             }}
           >
             Expert

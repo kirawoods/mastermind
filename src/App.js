@@ -9,14 +9,16 @@ class App extends Component {
     super(props);
 
     this.state = {
-      codeLength: 4
+      codeLength: undefined
     };
   }
   render() {
     if (this.state.codeLength === undefined) {
       return (
         <div className="App">
-          <SetGameMode />
+          <SetGameMode
+            onChange={value => this.setState({ codeLength: value })}
+          />
         </div>
       );
     } else
