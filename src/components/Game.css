@@ -6,22 +6,6 @@
   margin: auto;
 }
 
-.difficulty-buttons {
-  text-align: center;
-  margin: 10px;
-}
-
-.difficulty-button {
-  margin: 10px;
-  background-color: #0073b1;
-  color: #fff;
-  border: none;
-  outline: none;
-  padding: 10px;
-  border-radius: 2px;
-  font-size: 20px;
-}
-
 .GuessInput {
   padding: 30px 10px 0px 10px;
   text-align: center;
