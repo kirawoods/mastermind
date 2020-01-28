@@ -17,9 +17,6 @@ class GuessHistory extends Component {
     super(props);
   }
   render() {
-    console.log(this.props.guesses);
-    console.log(this.props.code);
-
     return (
       <div className="GuessHistory">
         <div className="guess-history-container">

@@ -23,7 +23,6 @@ class Game extends Component {
     document.addEventListener("keypress", e => {
       let keyValue = parseInt(String.fromCharCode(e.keyCode));
 
-      console.log(e.keyCode);
       if (
         this.state.newGuessArray.length <= this.props.codeLength - 1 &&
         keyValue >= 0 &&
@@ -44,8 +43,6 @@ class Game extends Component {
         this.setState({ newGuessArray: [] });
         e.preventDefault();
       }
-      console.log(this.state.guesses);
-      console.log(this.state.newGuessArray);
     });
   }
 
@@ -60,7 +57,6 @@ class Game extends Component {
       this.setState({
         newGuessArray: [...this.state.newGuessArray, value]
       });
-      console.log(this.state.newGuessArray);
     }
   };
 
@@ -72,7 +68,6 @@ class Game extends Component {
       this.setState({
         newGuessArray: []
       });
-      console.log(this.state.guesses);
     }
   };
 
@@ -97,9 +92,6 @@ class Game extends Component {
       this.setState({
         hints: [...this.state.hints, hint]
       });
-      console.log(hint);
-      console.log(this.state.hintNumber);
-      console.log(this.state.hints);
     }
   };
 
