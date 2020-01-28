@@ -13,6 +13,9 @@ const displayGuess = (code, guess, codeLength) => {
 };
 
 class GuessHistory extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     console.log(this.props.guesses);
     console.log(this.props.code);
@@ -22,6 +25,9 @@ class GuessHistory extends Component {
         <div className="guess-history-container">
           <div className="history-label-text">
             Guesses Remaining: {guessesAllowed - this.props.guesses.length}
+          </div>
+          <div className="history-label-text">
+            Code Length: {this.props.codeLength}
           </div>
           <div className="guess-header">
             <div className="history-label-text">Guess</div>

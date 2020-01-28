@@ -8,9 +8,9 @@ export function Header() {
       <img className="logo" src={Logo}></img>
       <div className="rules">
         <p>
-          Rules: The computer has chosen a secret 4 digit code that you must
-          guess. Each digit of the code will be between 0 and 7. You are allowed
-          10 guesses. For each guess, you will be told:
+          Rules: The computer has chosen a secret code that you must guess. Each
+          digit of the code will be between 0 and 7. You are allowed 10 guesses.
+          For each guess, you will be told:
         </p>
         <ul className="rules-bullet-list">
           <li className="rules-bullet">

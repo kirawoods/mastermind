@@ -16,7 +16,6 @@ class Game extends Component {
       newGuessArray: [],
       guesses: [],
       code: undefined,
-
       hintNumber: 0,
       hints: []
     };
@@ -33,16 +32,14 @@ class Game extends Component {
         this.setState({
           newGuessArray: [...this.state.newGuessArray, keyValue]
         });
-      } else if (
-        e.keyCode === 13 &&
-        this.state.newGuessArray.length === this.props.codeLength
-      ) {
-        this.setState({
-          guesses: [...this.state.guesses, this.state.newGuessArray]
-        });
-        this.setState({
-          newGuessArray: []
-        });
+      } else if (e.keyCode === 13) {
+        e.preventDefault();
+        if (this.state.newGuessArray.length === this.props.codeLength) {
+          this.setState({
+            guesses: [...this.state.guesses, this.state.newGuessArray],
+            newGuessArray: []
+          });
+        }
       } else if (String.fromCharCode(e.keyCode).toLowerCase() === "c") {
         this.setState({ newGuessArray: [] });
         e.preventDefault();
@@ -126,13 +123,15 @@ class Game extends Component {
   render() {
     if (this.state.code === undefined) {
       return (
-        <ReactLoading
-          className="loading"
-          type="bubbles"
-          color="black"
-          height="20%"
-          width="20%"
-        />
+        <div className="Game">
+          <ReactLoading
+            className="loading"
+            type="bubbles"
+            color="black"
+            height="20%"
+            width="20%"
+          />
+        </div>
       );
     }
     if (this.state.guesses.length !== 0) {
@@ -211,7 +210,11 @@ class Game extends Component {
               ))}
             </div>
           </div>
-          <GuessHistory guesses={this.state.guesses} code={this.state.code} />
+          <GuessHistory
+            guesses={this.state.guesses}
+            code={this.state.code}
+            codeLength={this.props.codeLength}
+          />
         </div>
       );
     }
